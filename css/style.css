@@ -1,0 +1,540 @@
+@charset "UTF-8";
+/*Подключение шрифтов*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700,800);
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+nav, footer, header, aside {
+  display: block;
+}
+
+html, body {
+	background-color: #FAFAFA;
+	;
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 14px;
+  color: #252B42;
+  font-weight: 500;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input, button, textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a, a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/*-Оболочка страницы, нужна для того, чтобы не возникал горизонтальный скрол-------------------*/
+
+.wrapper {
+	min-height: 100%;
+	overflow: hidden;
+	font-family: Montserrat;
+	display: flex;
+	flex-direction: column;
+}
+
+/*-Контейнер, ограничивающий контент по ширине и выровненный по центру-----------------------------------------------------------------*/
+
+._conteiner {
+	max-width: 1046px;
+	margin: 0 auto;
+	padding: 0 15px; /*добавляет безопасные отступы для адаптива*/
+}
+/*технический класс, который позволяет ставить картинку на фон*/
+._ibg {
+	position: relative;
+}
+._ibg img {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	object-fit: cover;
+}
+
+/*--Шапка страницы с логотипом и меню--------------------------------------------------*/
+.header {
+	position: absolute;/*закрепляем вверху и ставим большой зет-индекс*/
+	width: 100%;
+	top: 0;
+	left: 0;
+	z-index: 50;
+}
+.header__conteiner {
+	display: flex;
+	min-height: 104px;
+	align-items: center;
+	box-sizing: content-box;/*внутренние отступы не прибавляются*/
+}
+@media (max-width: 479px){
+	.header__conteiner{
+		max-height: 70px;
+	}
+}
+.header__logo {
+	font-size: 24px;
+	font-weight: 700;
+	color: inherit;/*позволяет ссылкам наследовать заданный цвет*/
+}
+.header__menu {
+	margin: 0 0 0 133px;
+}
+/*при уменьшении ширины экрана меняется отступ между логотипом и меню*/
+@media (max-width: 992px){
+	.header__menu{
+		margin: 0 0 0 80px;
+	}
+}
+@media (max-width: 767px){
+	.header__menu{
+		margin: 0 0 0 40px;
+	}
+}
+@media (max-width: 479px){
+	.header__menu{
+		margin: 0 0 0 20px;
+	}
+}
+.menu {
+	padding: 5px 0; /*отступ безопасности, чтобы пункты не прилипли к верху*/
+}
+.menu__list {
+	display: flex;
+	flex-wrap: wrap;/*блоки могут перескакивать на следующую строку при уменьшении ширины экрана*/
+}
+.menu__item {
+}
+/*запись обращается ко всем элементам, кроме последнего*/
+.menu__item:not(:last-child) {
+	margin: 0 21px 0 0;
+}
+.menu__link {
+	color: #737373;
+	font-weight: 600;
+	line-height: 171%;/*высчитанный процент calc(24 /14 * 100)*/
+}
+/*увеличиваем шрифт для более удобного использования на маленьком экране*/
+@media (max-width: 479px){
+	.menu__link {
+		font-size: 18px;
+	}
+}
+
+/*--------Основной контент--------------*/
+
+.page {
+	flex: 1 1 auto; /*позволяем увеличиваться */
+}
+.page__main-block {
+}
+.page__services {
+	position: relative;
+	z-index: 2;
+	margin: -111px 0 0 0; /*используем, когда необходимо поднять блок и чтобы следующие блоки были неразрывны с ним*/
+}
+.page__advantages {
+}
+.page__practice {
+}
+
+/*---------------HEADER-BLOCK----------------------*/
+
+.header-block {
+	text-align: center;
+	letter-spacing: 0.2px;
+}
+.header-block__title {
+	font-weight: 700;
+	font-size: 40px;
+	line-height: calc(57 / 40 * 100%);
+}
+@media (max-width: 992px) {
+	.header-block__title {
+		font-size: 35px;
+	}
+}
+@media (max-width: 767px) {
+	.header-block__title {
+		font-size: 30px;
+	}
+}
+.header-block__title:not(:last-child) {
+	margin: 0 0 10px 0;
+}
+.header-block__subtitle {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: calc(20 / 14 * 100%);
+	color: #737373;
+}
+
+/*-------MAIN-BLOCK------------------------------*/
+
+.main-block {
+	position: relative;
+}
+.main-block__conteiner {
+}
+.main-block__body {
+	padding: 184px 0 191px 0;
+	position: relative;
+	z-index: 3;
+	max-width: 400px;
+}
+@media (max-width: 992px) {
+	.main-block__body { /*убираем верхний отступ при уменьшении ширины картинки*/
+		padding: 120px 0 191px 0;
+	}
+}
+/*запись обращения ко всем блочным объектам первого уровня вложенности, кроме последнего*/
+.main-block__body > *:not(:last-child) {
+	margin: 0 0 35px 0;
+}
+.main-block__title {
+	font-weight: 800;
+	font-size: 58px;
+	line-height: calc(80 / 58 * 100%);
+	letter-spacing: 0.2px;
+}
+@media (max-width: 479px) {
+	.main-block__title {
+		font-size: 42px;
+	}
+}
+.main-block__text {
+	font-weight: 500;
+	font-size: 20px;
+	line-height: calc(30 / 20 * 100%);
+	letter-spacing: 0.2px;
+	color: #737373;
+}
+.main-block__buttons {
+	display: flex;
+	flex-wrap: wrap;
+	margin: -10px 0;
+}
+/*верстка кнопки*/
+.main-block__button {
+	border-radius: 37px;
+	min-height: 48px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 5px 36px; /*5px отступы безопасности*/
+	letter-spacing: 0.2px;
+	font-weight: 700;
+	line-height: 150%;
+	text-align: center;
+	margin: 10px 0;
+}
+@media (max-width: 479px) {
+	.main-block__button {
+		flex: 1 1 auto;
+	}
+}
+.main-block__button:not(:last-child) {
+	margin-right: 10px;
+}
+.main-block__button-orange {
+	background: #FF7B47;
+	color: #fff;
+}
+.main-block__button-border {
+	color: #0D5C63;
+	border: 1px solid #0D5C63;
+}
+/*картинка берет размеры относительно содержимого блока .main-block*/
+.main-block__image{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+@media (max-width: 1300px) {
+	.main-block__image img { /*обращаемся непосредственно к картинке*/
+		object-position: right;
+	}
+}
+@media (max-width: 992px) {
+	.main-block__image { /*выбеливаем картинку для лучшей читабельности текста*/
+		opacity: 0.5;
+	}
+}
+/*---------SERVICES-----------------------*/
+
+.services {
+}
+.services__conteiner {
+}
+.services__body {
+	
+}
+@media (min-width: 670px) {
+	.services__body {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 -15px;
+	}
+}
+.services__column {
+	padding: 0 15px;
+	flex: 0 1 33.333%;
+}
+@media (max-width: 992px) {
+	.services__column {
+		flex: 0 1 50%;
+		margin: 0 0 30px 0;
+	}
+	/*растягивает последний элемент на всю страницу*/
+	.services__column:last-child {
+		flex: 1 1 100%;
+	}
+}
+.services__item {
+	height: 100%;
+	box-shadow: 0px 13px 19px 0px #00000012;
+	background-color: #fff;
+	padding: 35px;
+}
+.item-service__green {
+	background-color: #0D5C63;
+}
+.item-service__green .item-service__text {
+	color: #fff;
+}
+.item-service__green .item-service__title {
+	color: #fff;
+}
+.item-service {
+}
+
+.item-service > *:not(:last-child) {
+	margin: 0 0 10px 0;
+}
+.item-service__icon {
+}
+.item-service__title {
+	font-weight: 700;
+	font-size: 24px;
+	line-height: calc(32 /24 * 100%);
+	letter-spacing: 0.1px;
+}
+.item-service__text {
+	font-weight: 500;
+	line-height: calc(20 / 14 * 100%);
+	letter-spacing: 0.2px;
+	color: #737373;
+}
+
+/*--------------ADVENTAGES---------------------------*/
+
+.advantages {
+	padding: 80px 0;
+}
+@media (max-width: 992px) {
+	.advantages {
+		padding: 50px 0;
+	}
+}
+@media (max-width: 767px) {
+	.advantages {
+		padding: 30px 0;
+	}
+}
+.adventages__conteiner {
+}
+.adventages__header {
+	margin: 0 0 50px 0;
+}
+@media (max-width: 767px) {
+	.adventages__header {
+		margin: 0 0 25px 0;
+	}
+}
+.advantages__body {
+	display: flex;
+	margin: 0 -15px -30px;
+	flex-wrap: wrap;
+}
+.adventages__column {
+	padding: 0 15px;
+	margin: 0 0 30px 0;
+	flex: 0 1 25%;
+}
+@media (max-width: 1020px){
+	.adventages__column {
+		flex: 0 1 50%;
+	}
+}
+@media (max-width: 560px){
+	.adventages__column {
+		flex: 0 1 100%;
+	}
+}
+.adventages__item {
+	background-color: #FFFFFF;
+	padding: 30px;
+	text-align: center;
+	font-weight: 700;
+}
+.adventages__item > *:not(:last-child) {
+	margin: 0 0 10px 0;
+}
+.adventages__icon {
+	/*Позволяет поставить все иконики в одну линию и уравнивает размер карточек*/
+	height: 48px;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+.adventages__value {
+	font-size: 40px;
+	line-height: 142%;
+	letter-spacing: 0.2px;
+}
+.adventages__text {
+	font-size: 16px;
+	line-height: calc(24 / 16 * 100%);
+	color: #737373;
+}
+
+/*---------PRACTICE------------*/
+
+.practice {
+	padding: 80px 0;
+}
+@media (max-width: 992px) {
+	.practice {
+		padding: 40px 0;
+	}
+}
+@media (max-width: 767px) {
+	.practice {
+		padding: 20px 0;
+	}
+}
+.practice__container {
+}
+.practice__header {
+	padding: 45px 0px;
+}
+.practice__body {
+	display: flex;
+	margin: 0 -20px -30px;
+	flex-wrap: wrap;
+}
+.practice__column {
+	padding: 0 20px;
+	flex: 0 1 25%;
+	margin: 0 0 30px 0;
+}
+@media (max-width: 1040px) {
+	.practice__column {
+		flex: 0 1 50%;
+	}
+}
+@media (max-width: 620px) {
+	.practice__column {
+		flex: 0 1 100%;
+	}
+}
+.practice__item {
+}
+.item-practice {
+	background-color: #fff;
+	/* чтобы карточки были одного размера независимо от количества текста*/
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.item-practice__content {
+	padding: 30px;
+	flex: 1 1 auto; /* позволяем увеличиваться данному блоку*/
+}
+.item-practice__link {
+	display: inline-block;
+	color: inherit;
+}
+.item-practice__link:not(:last-child) {
+	margin: 0 0 15px 0;
+}
+.item-practice__title {
+	font-weight: 700;
+	font-size: 16px;
+	line-height: calc(24 / 16 * 100%);
+	letter-spacing: 0.1px;
+}
+.item-practice__text {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: calc(20 / 14 * 100%);
+	letter-spacing: 0.2px;
+	color: #737373;
+}
+.item-practice__image { /*к картинке также действует класс _ibg и сначала она не отображается, при применении внутреннего отступа она появляется*/
+	display: block;
+	padding: 0 0 60% /* из макета 138 / 230 * 100% */ 0;
+}
+
+/*--------Подвал--------------*/
+
+.footer {
+
+}
